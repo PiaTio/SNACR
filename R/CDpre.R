@@ -1,0 +1,146 @@
+#' Variable selection algorithm with a predefined component loading structure
+#'
+#' Note that parameter "Posit" indicate which components need a Lasso penalty. From R package \code{RegularizedSCA} (Gu & Van Deun, 2016).
+#'
+#' @param DATA The concatenated data block, with rows representing subjects.
+#' @param Jk A vector. Each element of this vector is the number of columns of a
+#'  data block.
+#' @param R The number of components (R>=2).
+#' @param Posit Indicate on which component(s) the Lasso Penalty is imposed. If unspecified, the algorithm assume that the
+#'Lasso penalty is imposed on the common component(s) only. If there is no common component, then Lasso penalty is applied to all components.
+#' @param GroupStructure XXX
+#' @param LASSO A Lasso tuning parameter.
+#' @param MaxIter Maximum number of iterations for this algorithm. The default
+#'  value is 400.
+#'
+#' @return Component loadings ($Pmatrix) and scores ($Tmatrix)
+#' @references
+#' Gu, Z., & Van Deun, K. (2016). A variable selection method for simultaneous component based data integration. \emph{Chemometrics and Intelligent Laboratory Systems}, 158, 187-199.
+#' @export
+#'
+CDpre <- function(DATA, Jk, R, Posit, GroupStructure, LASSO, MaxIter){
+
+  #note: Posit can be obtained from GroupStructure as well.
+
+  DATA <- data.matrix(DATA)
+  DistPosition <- setdiff(1:R, Posit)
+  I_Data <- dim(DATA)[1]
+  sumJk <- dim(DATA)[2]
+  eps <- 10^(-12)
+
+  if(missing(MaxIter)){
+    MaxIter <- 400
+  }
+
+  #initialize P, Lossc
+  P <- matrix(stats::rnorm(sumJk * R), nrow = sumJk, ncol = R)
+  P[GroupStructure == 0]<-0
+  Pt <- t(P)
+
+  PIndexforLasso <- Pt
+  PIndexforLasso[Posit, ] <- 1
+  PIndexforLasso[DistPosition, ] <- 0
+  PIndexforGLasso <- Pt #note that the distinctive structure is predefined.
+  PIndexforGLasso[Posit, ] <- 0
+  PIndexforGLasso[DistPosition, ] <- 1
+
+  pen1 <- LASSO*sum(abs(P[, Posit]))
+  sqP <- P^2
+
+  residual <- sum(DATA^2)
+  Lossc <- residual + pen1
+
+  conv <- 0
+  iter <- 1
+  Lossvec <- array()
+
+  while (conv == 0){
+
+    #update Tmat, note that Tmax refers to T matrix
+    if (LASSO == 0){
+      SVD_DATA <- svd(DATA, R, R)
+      Tmat <- SVD_DATA$u
+    }
+    else {
+      A <- Pt %*% t(DATA)
+      SVD_DATA <- svd(A, R, R)
+      Tmat <- SVD_DATA$v %*% t(SVD_DATA$u)
+    }
+
+    residual <- sum((DATA - Tmat %*% Pt)^2)
+    Lossu <- residual + pen1
+
+    #update P
+    if (LASSO == 0){
+      P <- t(DATA) %*% Tmat
+      P[GroupStructure == 0] <- 0  # this is to keep the zero structures
+      Pt <- t(P)
+    }
+    else{
+
+      for (r in 1:R){
+        if (r %in% Posit) {
+          for (j in 1:sumJk){
+            ols <- t(DATA[, j]) %*% Tmat[, r]
+            Lambda <- 0.5 * LASSO
+            if (ols < 0 & abs(ols) > Lambda) {
+              P[j, r] <- ols + Lambda
+            }
+            else if (ols > 0 & abs(ols) > Lambda) {
+              P[j, r] <- ols - Lambda
+            }
+            else {
+              P[j, r] <- 0
+            }
+          }
+        }
+        else {
+          for (j in 1:sumJk){
+            P[j, r] <- t(DATA[, j]) %*% Tmat[, r] #note that in the original matlab file this term is devided by sumD(=1)
+          }
+        }
+      }
+      P[GroupStructure == 0] <- 0
+      Pt <- t(P)
+    }
+
+
+    #absP <- abs(P)
+    pen1 <- LASSO*sum(abs(P[, Posit]))
+    sqP <- P^2
+
+    residual <- sum((DATA - Tmat %*% Pt)^2)
+    Lossu2 <- residual + pen1
+
+    #check convergence
+    if (abs(Lossc-Lossu)< 10^(-9)) {
+      Loss <- Lossu
+      residual <- residual
+      lassopen <- pen1
+      P[abs(P) <= 2 * eps] <- 0
+      conv <- 1
+    }
+    else if (iter > MaxIter | LASSO == 0){
+      Loss <- Lossu
+      residual <- residual
+      lassopen <- pen1
+      P[abs(P) <= 2 * eps] <- 0
+      conv <- 1
+    }
+
+    Lossvec[iter] <- Lossu
+    iter <- iter + 1
+    Lossc <- Lossu2
+  }
+
+  return_varselect <- list()
+  return_varselect$Pmatrix <- P
+  return_varselect$Tmatrix <- Tmat
+  return_varselect$Loss <- Loss
+  return_varselect$Lossvec <- Lossvec
+  #return_varselect$residual <- residual
+  #return_varselect$lassopen <- lassopen
+  #return_varselect$iter <- iter - 1
+  return(return_varselect)
+
+}

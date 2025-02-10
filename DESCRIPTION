@@ -1,0 +1,22 @@
+Package: SNACR
+Title: Analyze Multi-Domain Data Using Two-Step Component and Network Analysis
+Version: 0.0.0.9000
+Authors@R: c(
+  person("Pia", "Tio", , "piatio@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8984-491X")),
+  person("Katrijn", "Van Deun", , "K.VanDeun@uvt.nl", role = "aut"),
+  person("Lourens", "Waldorp", , "L.J.Waldorp@uva.nl", role = "aut"))
+Description: A two-step analysis of multi-domain/block/source data sets to estimate cross-domain partial correlations. 
+    In step one, component analysis splits data set's variance in domain-specific and cross-domain/common components. 
+    In step two, network analysis estimates (partial) correlations of the cross-domain/common component. 
+License: GPL (>= 2)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+  glasso,
+  stats,
+  mice,
+  ggplot2
+Depends: 
+    R (>= 2.10)
+LazyData: true
