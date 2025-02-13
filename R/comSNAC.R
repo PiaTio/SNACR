@@ -27,9 +27,9 @@ comSNAC = function(data, b1, b2, R, method = "structured", Target){
   if(R==1){
     stop("R = 1 is not allowed.")
   }
-  if(missing(method)){
-    stop("Choose method.")
-  }
+  # if(missing(method)){
+  #   stop("Choose method.")
+  # }
 
   Jk <- c(b1, b2)
   component = list()
