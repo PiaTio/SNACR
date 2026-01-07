@@ -1,0 +1,35 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# SNACR
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/PiaTio/SNACR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PiaTio/SNACR/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
+Sparse Network And Component (SNAC) Analysis is a network analysis devloped to estimate partial correlations between variables from two different data domains/blocks/sources. Instead of treating data from multiple domains as a single data block (as many other network estimation methods do), SNAC explicitly takes the data's multi-domain structure into account. By using a component analysis step SNAC separates the domain-specific variance from the cross-domain variance; the latter is then used to estimate corss-domain partial correlations without the generally dominering influence of the domain-specific partial correlations. 
+
+## Installation
+
+You can install the development version of SNACR from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("PiaTio/SNACR")
+```
+
+## Example
+
+A tutorial on how to use SNACR package can be found in Tio, P., Van Deun, K., Waldorp, L.J., & Borsboom, D. (2026). Sparse Network And Component Analysis: A Tutorial on estimating Cross-Domain Networks. (Manuscript submitted for publication).
