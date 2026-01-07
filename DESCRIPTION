@@ -17,5 +17,5 @@ Imports:
   dplyr, snow, utils, methods, bootnet, pbapply, NetworkToolbox,
   networktools, qgraph, tibble
 Depends: 
-    R (>= 3.0.0)
+    R (>= 3.5)
 LazyData: true
