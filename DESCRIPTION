@@ -14,8 +14,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports:
   glasso, stats, mice, ggplot2, psych,
-  dplyr, snow, utils, methods, bootnet, pbapply, NetworkToolbox,
-  networktools, qgraph, tibble
+  dplyr, snow, utils, methods, bootnet, pbapply
 Depends: 
     R (>= 3.5)
 LazyData: true

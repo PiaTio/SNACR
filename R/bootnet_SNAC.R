@@ -833,7 +833,7 @@ bootnet_SNAC <- function(
   if (verbose){
     message("Computing statistics...")
   }
-  statTableOrig <- statTable(sampleResult,  name = "sample", alpha = alpha, computeCentrality = computeCentrality,statistics=statistics, directed=directed, includeDiagonal=includeDiagonal, bridgeArgs=bridgeArgs)
+  statTableOrig <- bootnet:::statTable(sampleResult,  name = "sample", alpha = alpha, computeCentrality = computeCentrality,statistics=statistics, directed=directed, includeDiagonal=includeDiagonal, bridgeArgs=bridgeArgs)
 
   if (nCores == 1){
     if (verbose){
@@ -841,7 +841,7 @@ bootnet_SNAC <- function(
     }
     statTableBoots <- vector("list", nBoots)
     for (b in seq_len(nBoots)){
-      statTableBoots[[b]] <- statTable(bootResults[[b]], name = paste("boot",b), alpha = alpha, computeCentrality = computeCentrality, statistics=statistics, directed=directed,  bridgeArgs=bridgeArgs, includeDiagonal=includeDiagonal)
+      statTableBoots[[b]] <- bootnet:::statTable(bootResults[[b]], name = paste("boot",b), alpha = alpha, computeCentrality = computeCentrality, statistics=statistics, directed=directed,  bridgeArgs=bridgeArgs, includeDiagonal=includeDiagonal)
       if (verbose){
         utils::setTxtProgressBar(pb, b)
       }
@@ -854,7 +854,7 @@ bootnet_SNAC <- function(
       # Set library:
       .libPaths(library)
 
-      statTable(bootResults[[b]], name = paste("boot",b), alpha = alpha, computeCentrality = computeCentrality, statistics=statistics, directed=directed, bridgeArgs=bridgeArgs, includeDiagonal=includeDiagonal)
+      bootnet:::statTable(bootResults[[b]], name = paste("boot",b), alpha = alpha, computeCentrality = computeCentrality, statistics=statistics, directed=directed, bridgeArgs=bridgeArgs, includeDiagonal=includeDiagonal)
     }, cl = cl)
     # Stop the cluster:
     snow::stopCluster(cl)
