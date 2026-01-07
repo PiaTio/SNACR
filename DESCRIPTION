@@ -16,7 +16,14 @@ Imports:
   glasso,
   stats,
   mice,
-  ggplot2
+  ggplot2,
+  psych,
+  dplyr,
+  snow,
+  utils,
+  methods,
+  desctable,
+  bootnet
 Depends: 
     R (>= 2.10)
 LazyData: true

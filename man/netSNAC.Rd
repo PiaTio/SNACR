@@ -4,17 +4,20 @@
 \alias{netSNAC}
 \title{Estimate partial correlation network of common component}
 \usage{
-netSNAC(Pcommon, Tcommon, lasso = 0.002)
+netSNAC(Pcommon, Tcommon, lambda_net)
 }
 \arguments{
 \item{Pcommon}{Component loadings of the common component(s). Should be a matrix of p variables by Rc number of common components}
 
 \item{Tcommon}{Component scores of the common component(s). Should be a matrix of n participants by Rc number of common components}
 
-\item{lasso}{Lambda parameter for graphical lasso. Default is set at 0.002}
+\item{lambda_net}{Range of the lambda tuning parameter for the graphical lasso. Default value is a sequence of 100 numbers from 0.0000001 to 0.05. The numbers are equally spaced on a log scale.}
 }
 \value{
-An inverse covariance matrix and partial correlation matrix of common component
+The partial correlation matrix and inverse covariance matrix of the common component, as well as the
+\item{graph}{Partial correlation matrix.}
+\item{inv_cov}{Inverse covariance matrix.}
+\item{lambda_net}{Lambda tuning parameter used in for graphical lasso that leads to the model with PRESS closest to the lowest PRESS + 1SE.}
 }
 \description{
 The partial correlation and inverse covariance matrices of the common component(s) are estimated using graphical lasso.
