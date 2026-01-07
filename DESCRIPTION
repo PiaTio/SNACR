@@ -11,19 +11,11 @@ Description: A two-step analysis of multi-domain/block/source data sets to estim
 License: GPL (>= 2)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports:
-  glasso,
-  stats,
-  mice,
-  ggplot2,
-  psych,
-  dplyr,
-  snow,
-  utils,
-  methods,
-  desctable,
-  bootnet
+  glasso, stats, mice, ggplot2, psych,
+  dplyr, snow, utils, methods, bootnet, pbapply, NetworkToolbox,
+  networktools, qgraph, tibble
 Depends: 
-    R (>= 2.10)
+    R (>= 3.0.0)
 LazyData: true

@@ -69,7 +69,7 @@ bootnet_SNAC(
 
 \item{memorysaver}{Default is TRUE}
 
-\item{...}{}
+\item{...}{Argument for 'fun' function}
 }
 \value{
 A bootnet object with the following elements

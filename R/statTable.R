@@ -1,12 +1,19 @@
-# Compute tidy table from bootnetResult object:
-# Result in data frame with entries:
-# original (logical)
-# name
-# type
-# node1
-# node2
-# value
-
+#' Compute tidy table from bootnetResult object. Taken from bootnet package (Epskamp, Borsboom, & Fried, 2018)
+#'
+#' @param x X
+#' @param name Name
+#' @param alpha Default is 1
+#' @param computeCentrality Compute centrality? Default is TRUE
+#' @param statistics Which statistics should be calculated
+#' @param directed Is directed? Default is FALSE
+#' @param bridgeArgs list
+#' @param includeDiagonal Include diagonal? Default is FALSE
+#' @param ... arguments for function
+#'
+#' @returns Result in data frame with entries: original (logical), name, type, node1, node2, value
+#' @references Epskamp, S., Borsboom, D., & Fried, E. I. (2018). Estimating psychological networks and their accuracy: A tutorial paper. Behavior Research Methods, 50(1), 195-212.
+#' @export
+#'
 statTable <- function(x,
                       name,
                       alpha = 1,
@@ -46,7 +53,7 @@ statTable <- function(x,
   type <- NULL
   value <- NULL
 
-  stopifnot(is(x, "bootnetResult"))
+  stopifnot(methods::is(x, "bootnetResult"))
   tables <- list()
   if (is.null(x[['labels']])){
     x[['labels']] <- seq_len(ncol(x[['graph']]))
@@ -260,7 +267,7 @@ statTable <- function(x,
         ))
       })
 
-      if (is(tryrspbc,"try-error")){
+      if (methods::is(tryrspbc,"try-error")){
         tables$rspbc <- tibble::as_tibble(data.frame(
           name = name,
           type = "rspbc",
@@ -286,7 +293,7 @@ statTable <- function(x,
         ))
       })
 
-      if (is(tryhybrid,"try-error")){
+      if (methods::is(tryhybrid,"try-error")){
         tables$rspbc <- tibble::as_tibble(data.frame(
           name = name,
           type = "hybrid",
@@ -313,7 +320,7 @@ statTable <- function(x,
         ))
       })
 
-      if (is(tryeigenvector,"try-error")){
+      if (methods::is(tryeigenvector,"try-error")){
         tables$eigenvector <- tibble::as_tibble(data.frame(
           name = name,
           type = "eigenvector",
@@ -411,9 +418,10 @@ statTable <- function(x,
   tab$nNode <- x$nNode
   tab$nPerson <- x$nPerson
 
+
   # Compute rank:
-  tab <- tab %>% group_by(.data[['type']]) %>%
-    mutate(rank_avg = rank(value,ties.method = "average"),
+  tab <- tab %>% dplyr::group_by(.data[['type']]) %>%
+    dplyr::mutate(rank_avg = rank(value,ties.method = "average"),
            rank_min = rank(value,ties.method = "min"),
            rank_max = rank(value,ties.method = "max"))
 

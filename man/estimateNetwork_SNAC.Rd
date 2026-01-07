@@ -2,7 +2,7 @@
 % Please edit documentation in R/estimateNetwork_SNAC.R
 \name{estimateNetwork_SNAC}
 \alias{estimateNetwork_SNAC}
-\title{This function takes data as input and produced a network. It is used inside bootnet_SNAC()}
+\title{This function takes data as input and produced a network. It is used inside bootnet_SNAC() and should not be used by itself.}
 \usage{
 estimateNetwork_SNAC(
   data,
@@ -25,7 +25,33 @@ estimateNetwork_SNAC(
 }
 \arguments{
 \item{data}{Data matrix}
+
+\item{default}{Default network estimation functions}
+
+\item{fun}{Function that takes data and returns a network or list entitled "graph" and "thresholds" (optional)}
+
+\item{labels}{Labels of the variables}
+
+\item{verbose}{Want updates?}
+
+\item{.dots}{A list}
+
+\item{weighted}{Is the network weighted? Default is TRUE}
+
+\item{signed}{Is the network signed? Default is TRUE}
+
+\item{directed}{Is the network directed?}
+
+\item{datatype}{What is the data type?}
+
+\item{checkNumeric}{Internal check}
+
+\item{...}{Arguments for the 'fun' function}
+
+\item{.input}{Skip most steps if supplied}
+
+\item{memorysaver}{If set to FALSE (default) data, estimator and results are not stored.}
 }
 \description{
-This function takes data as input and produced a network. It is used inside bootnet_SNAC()
+This function takes data as input and produced a network. It is used inside bootnet_SNAC() and should not be used by itself.
 }
