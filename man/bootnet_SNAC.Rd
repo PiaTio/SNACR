@@ -18,6 +18,7 @@ bootnet_SNAC(
   caseMax = 0.75,
   caseN = 10,
   subCases,
+  subNodes,
   computeCentrality = TRUE,
   propBoot = 1,
   replacement = TRUE,
@@ -54,6 +55,8 @@ bootnet_SNAC(
 \item{caseN}{Default is 10}
 
 \item{subCases}{subCases}
+
+\item{subNodes}{subNodes}
 
 \item{computeCentrality}{Whether to compute centrality TRUE/FALSE}
 

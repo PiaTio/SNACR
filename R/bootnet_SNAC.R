@@ -15,6 +15,7 @@
 #' @param caseMax Maximum proportion to drop
 #' @param caseN Default is 10
 #' @param subCases subCases
+#' @param subNodes subNodes
 #' @param computeCentrality Whether to compute centrality TRUE/FALSE
 #' @param propBoot M out of N
 #' @param replacement Bootstrap with replacement? Default is TRUE
@@ -58,6 +59,7 @@ bootnet_SNAC <- function(
     caseMax = 0.75, # Maximum proportion to DROP
     caseN = 10,
     subCases,
+    subNodes,
     computeCentrality = TRUE,
     propBoot = 1, # M out of N
     # subsampleSize,
