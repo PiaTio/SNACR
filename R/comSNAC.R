@@ -75,7 +75,7 @@ comSNAC = function(data, b1, b2, R, method = "structured", Target){
 
     structure <- num_common(Pmatrix, Jk)
 
-    component$Parameters <- para$RecommendedLasso
+    component$lambda_com <- para$RecommendedLasso
     component$Structure <- structure
   }
 
