@@ -8,7 +8,7 @@
 #' @param R The number of components
 #' @param method How is component structure determined? Default is "structured" for which a predetermined component structure in the form of a Target is required.
 #' @param Target Required for structured analysis. Should be matrix of 2 rows (for each data block) by R components. Enter 0 if data block should not contribute to that component; 1 is data block should contribute to that component.
-#' @param comp The component which to bootstrap
+#' @param comp The position of the component to bootstrap
 #' @param lambda_com Lambda parameter for lasso (component step). Default is determined by 10-fold cross-validation.
 #' @param lambda_net Lambda parameter for graphical lasso (network step). Default is determined by 10-fold cross-validation.
 #'

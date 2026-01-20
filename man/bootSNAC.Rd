@@ -29,7 +29,7 @@ bootSNAC(
 
 \item{Target}{Required for structured analysis. Should be matrix of 2 rows (for each data block) by R components. Enter 0 if data block should not contribute to that component; 1 is data block should contribute to that component.}
 
-\item{comp}{The component which to bootstrap}
+\item{comp}{The position of the component to bootstrap}
 
 \item{lambda_com}{Lambda parameter for lasso (component step). Default is determined by 10-fold cross-validation.}
 

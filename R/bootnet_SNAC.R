@@ -869,6 +869,7 @@ bootnet_SNAC <- function(
     numbCommon = numbCommon + (bootResults[[i]]$no_common)
 
   }
+  message(paste("Note: A common component was found in ", paste0(numbCommon, collapse=", "), "out of", paste0(nBoots, collapse=", "), "bootstraps."))
 
   # Ordereing by node name to make nice paths:
   Result <- list(
