@@ -1,6 +1,6 @@
 Package: SNACR
 Title: Analyze Multi-Domain Data Using Two-Step Component and Network Analysis
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
   person("Pia", "Tio", , "piatio@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8984-491X")),
   person("Katrijn", "Van Deun", , "K.VanDeun@uvt.nl", role = "aut"),

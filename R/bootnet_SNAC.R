@@ -879,7 +879,7 @@ bootnet_SNAC <- function(
     boots = bootResults,
     type = type,
     sampleSize = Np,
-    numbCommon = numbCommon,
+    cocorec = (numbCommon/nBoots),
     lambdaCom = lambdaCom,
     lambdaNet = lambdaNet)
 
