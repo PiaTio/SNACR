@@ -871,7 +871,7 @@ bootnet_SNAC <- function(
     numbCommon = numbCommon + (bootResults[[i]]$no_common)
     compStruc[[i]] = bootResults[[i]]$com_struc
   }
-  message(paste("Note: A common component was found in ", paste0(numbCommon, collapse=", "), "out of", paste0(nBoots, collapse=", "), "bootstraps."))
+  cocorec = (numbCommon/nBoots*100)
 
   # Ordereing by node name to make nice paths:
   Result <- list(
@@ -885,6 +885,7 @@ bootnet_SNAC <- function(
     lambdaCom = lambdaCom,
     lambdaNet = lambdaNet,
     compStruc = compStruc)
+  message(paste("The common component recovery rate is", paste0(cocorec, collapse=", "), "%"))
 
   class(Result) <- "bootnet"
 
