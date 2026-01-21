@@ -26,8 +26,9 @@ Sparse Network And Component (SNAC) Analysis is a network analysis devloped to e
 You can install the development version of SNACR from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pak")
-pak::pak("PiaTio/SNACR")
+library(devtools)
+devtools::install_github("PiaTio/SNACR")
+library(SNACR)
 ```
 
 ## Example
