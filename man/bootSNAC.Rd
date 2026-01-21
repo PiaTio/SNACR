@@ -41,6 +41,7 @@ bootSNAC(
 \item{cv_lambda_com}{Estimated value for lasso lambda.}
 \item{cv_lambda_net}{Estimated value for graphical lasso lambda.}
 \item{no_common}{Value indicating whether the component was a common component (1) or not (0).}
+\item{com_struc}{Estimated component structure.}
 }
 \description{
 This function is used to bootstrap SNAC analysis and should not be used on its own.

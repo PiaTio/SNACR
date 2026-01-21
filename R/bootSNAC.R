@@ -18,6 +18,7 @@
 #' \item{cv_lambda_com}{Estimated value for lasso lambda.}
 #' \item{cv_lambda_net}{Estimated value for graphical lasso lambda.}
 #' \item{no_common}{Value indicating whether the component was a common component (1) or not (0).}
+#' \item{com_struc}{Estimated component structure.}
 #' @export
 #'
 bootSNAC <- function(data, b1, b2, R, method = "structured", Target, comp, lambda_com, lambda_net){
@@ -93,7 +94,8 @@ bootSNAC <- function(data, b1, b2, R, method = "structured", Target, comp, lambd
     inv_cov = newINV,
     cv_lambda_com = cv_lambda_com,
     cv_lambda_net = cv_lambda_net,
-    no_common = no_common
+    no_common = no_common,
+    com_struc = component$Structure
   )
   return(cvResults)
 }

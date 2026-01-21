@@ -33,6 +33,7 @@
 #' \item{numbCommon}{Number of times the component comp was a common component.}
 #' \item{lambdaCom}{String of bootstrapped 10-fold cross-validation values for lasso lambda.}
 #' \item{lambdaNet}{String of bootstrapped 10-fold cross-validation values for graphical lasso lambda.}
+#' \item{compStruc}{A list containing the component structure of each bootstrap.}
 #' @references Epskamp, S., Borsboom, D., & Fried, E. I. (2018). Estimating psychological networks and their accuracy: A tutorial paper. Behavior Research Methods, 50(1), 195-212.
 #' @export
 #'
@@ -862,12 +863,13 @@ bootnet_SNAC <- function(
 
   lambdaCom = NULL
   lambdaNet = NULL
+  compStruc = list()
   numbCommon = 0
   for (i in 1:nBoots){
     lambdaCom[i] = bootResults[[i]]$cv_lambda_com
     lambdaNet[i] = bootResults[[i]]$cv_lambda_net
     numbCommon = numbCommon + (bootResults[[i]]$no_common)
-
+    compStruc[[i]] = bootResults[[i]]$com_struc
   }
   message(paste("Note: A common component was found in ", paste0(numbCommon, collapse=", "), "out of", paste0(nBoots, collapse=", "), "bootstraps."))
 
@@ -881,7 +883,8 @@ bootnet_SNAC <- function(
     sampleSize = Np,
     cocorec = (numbCommon/nBoots),
     lambdaCom = lambdaCom,
-    lambdaNet = lambdaNet)
+    lambdaNet = lambdaNet,
+    compStruc = compStruc)
 
   class(Result) <- "bootnet"
 

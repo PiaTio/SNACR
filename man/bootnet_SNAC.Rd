@@ -83,6 +83,7 @@ A bootnet object with the following elements
 \item{numbCommon}{Number of times the component comp was a common component.}
 \item{lambdaCom}{String of bootstrapped 10-fold cross-validation values for lasso lambda.}
 \item{lambdaNet}{String of bootstrapped 10-fold cross-validation values for graphical lasso lambda.}
+\item{compStruc}{A list containing the component structure of each bootstrap.}
 }
 \description{
 Adjusted version of function bootnet() from R package bootnet (Epskamp, Borsboom, & Fried, 2018)

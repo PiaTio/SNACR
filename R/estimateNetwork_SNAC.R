@@ -572,7 +572,8 @@ estimateNetwork_SNAC <- function(
     thresholded = FALSE,
     cv_lambda_com = Result$cv_lambda_com,
     cv_lambda_net = Result$cv_lambda_net,
-    no_common = Result$no_common
+    no_common = Result$no_common,
+    com_struc = Result$com_struc
   )
   class(sampleResult) <- c("bootnetResult", "list")
 
