@@ -884,7 +884,7 @@ bootnet_SNAC <- function(
     cocorec = cocorec,
     lambdaCom = lambdaCom,
     lambdaNet = lambdaNet,
-    compStruc = compStruc)
+    Structure = compStruc)
   message(paste("The common component recovery rate is", paste0(cocorec, collapse=", "), "%"))
 
   class(Result) <- "bootnet"

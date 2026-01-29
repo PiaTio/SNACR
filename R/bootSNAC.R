@@ -59,6 +59,7 @@ bootSNAC <- function(data, b1, b2, R, method = "structured", Target, comp, lambd
   if(sum(component$Structure[comp] == "common") == 1){
     no_common = 1
   }
+  else {no_common = 0}
 
   #Create data set based on chosen components
   Xcomp <- component$Tmatrix[,comp]%*%t(component$Pmatrix[,comp])
