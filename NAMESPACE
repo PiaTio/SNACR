@@ -2,13 +2,11 @@
 
 export(CDpre)
 export(bootSNAC)
-export(bootnet_SNAC)
 export(comSNAC)
 export(component_structure)
 export(cv_graphicalLasso)
 export(cv_structuredSCA)
 export(determinant_check)
-export(estimateNetwork_SNAC)
 export(netSNAC)
 export(num_common)
 export(pre_process)
