@@ -2,6 +2,7 @@
 
 export(CDpre)
 export(bootSNAC)
+export(bootSNAC_sum)
 export(comSNAC)
 export(component_structure)
 export(cv_graphicalLasso)

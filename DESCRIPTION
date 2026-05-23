@@ -13,8 +13,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports:
-  glasso, stats, mice, ggplot2, psych,
-  dplyr, snow, utils, methods, bootnet, pbapply
+  glasso, stats, mice, ggplot2, psych, utils
 Depends: 
     R (>= 3.5)
 LazyData: true
