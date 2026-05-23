@@ -90,13 +90,17 @@ bootSNAC <- function(data, b1, b2, R, method = "structured", Target, comp, lambd
   pcor = stats::cov2cor(newINV)*-1
   diag(pcor) = 1
 
-  cvResults = list(
-    graph = pcor,
+  res = list(
     inv_cov = newINV,
     cv_lambda_com = cv_lambda_com,
     cv_lambda_net = cv_lambda_net,
     no_common = no_common,
     com_struc = component$Structure
   )
-  return(cvResults)
+
+  results = list(
+    graph = pcor,
+    results = res
+  )
+  return(results)
 }
