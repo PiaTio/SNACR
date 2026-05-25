@@ -33,4 +33,4 @@ library(SNACR)
 
 ## Example
 
-A tutorial on how to use SNACR package can be found in Tio, P., Van Deun, K., Waldorp, L.J., & Borsboom, D. (2026). Sparse Network And Component Analysis: A Tutorial on estimating Cross-Domain Networks. (Manuscript submitted for publication).
+A tutorial on how to use SNACR package can be found in Tio, P., Van Deun, K., Waldorp, L.J., & Borsboom, D. (2026). Sparse Network And Component Analysis: A Tutorial on estimating Cross-Domain Networks. (Manuscript submitted for publication). The accompanying code can be found here https://github.com/PiaTio/SNACR/blob/master/Tutorial%20code%20SNAC.R
